@@ -59,6 +59,7 @@
   .field{margin:16px 0}
   .field > label.q{display:block;font-family:'Figtree',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px;color:var(--espresso)}
   .field .req{color:var(--bordo)}
+  .field .sub{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.8rem;color:#8a7f76;margin-top:2px}
   input[type=text],input[type=tel],input[type=email],textarea{width:100%;font-family:'Inter',sans-serif;font-size:1rem;color:var(--espresso);background:#fff;border:1.5px solid var(--linha);border-radius:10px;padding:12px 14px}
   input:focus,textarea:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(146,171,192,.25)}
   textarea{min-height:120px;resize:vertical;line-height:1.55}
@@ -70,9 +71,11 @@
   .opt.sel .dot{border-color:var(--bordo);background:var(--bordo);box-shadow:inset 0 0 0 3px #fff}
   .opt.multi .dot{border-radius:6px}
   .opt .lbl{flex:1}
-  .scale{display:flex;gap:8px}
-  .scale .opt{flex:1;flex-direction:column;text-align:center;gap:6px;padding:11px 6px;font-size:.86rem}
-  .scale .opt .dot{flex:0 0 18px;height:18px}
+  .scale{display:flex;gap:8px;margin-top:6px}
+  .seg{flex:1;text-align:center;padding:13px 6px;border:1.5px solid var(--linha);border-radius:12px;font-family:'Figtree',sans-serif;font-weight:700;font-size:.9rem;line-height:1.2;background:#fff;color:var(--espresso);cursor:pointer;transition:border-color .15s,background .15s,color .15s}
+  .seg:hover{border-color:var(--indigo)}
+  .seg.sel{background:var(--bordo);color:#fff;border-color:var(--bordo)}
+  .prompt-en{margin:0;font-weight:600;font-size:1.02rem;line-height:1.5;color:var(--espresso)}
   .err{color:#a8452f;font-size:.85rem;font-weight:600;margin-top:8px;display:none}
   .err.show{display:block}
 

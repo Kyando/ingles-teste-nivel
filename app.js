@@ -37,6 +37,17 @@
   function blankify(txt) { return esc(txt).replace("___", '<span class="blank">_____</span>'); }
   function scrollTop() { window.scrollTo({ top: 0, behavior: "smooth" }); }
 
+  // máscara de telefone BR: (41) 99622-6496  (aceita fixo 10 díg. e celular 11 díg.)
+  function maskTel(v) {
+    var d = String(v).replace(/\D/g, "").slice(0, 11);
+    if (!d) return "";
+    if (d.length <= 2) return "(" + d;
+    var head = "(" + d.slice(0, 2) + ") ";
+    if (d.length <= 6) return head + d.slice(2);
+    if (d.length <= 10) return head + d.slice(2, 6) + "-" + d.slice(6);   // fixo
+    return head + d.slice(2, 7) + "-" + d.slice(7);                        // celular
+  }
+
   function progress() {
     var total = D.questoes.length;
     switch (state.step) {
@@ -98,13 +109,20 @@
     var form = el('<div></div>');
     D.perfil.forEach(function (f) {
       var field = el('<div class="field" data-fid="' + f.id + '"></div>');
-      var lab = '<label class="q">' + esc(f.label) + (f.obrigatorio ? ' <span class="req">*</span>' : '') + '</label>';
+      var lab = '<label class="q">' + esc(f.label) + (f.obrigatorio ? ' <span class="req">*</span>' : '') +
+        (f.sublabel ? '<span class="sub">' + esc(f.sublabel) + '</span>' : '') + '</label>';
       field.innerHTML = lab;
       if (f.tipo === "texto" || f.tipo === "tel" || f.tipo === "email") {
         var it = ({ texto: "text", tel: "tel", email: "email" })[f.tipo];
         var inp = el('<input type="' + it + '" ' + (f.placeholder ? 'placeholder="' + esc(f.placeholder) + '"' : '') + '>');
         inp.value = state.perfil[f.id] || "";
-        inp.oninput = function () { state.perfil[f.id] = inp.value.trim(); };
+        if (f.tipo === "tel") {
+          inp.setAttribute("inputmode", "numeric");
+          inp.value = maskTel(inp.value);
+          inp.oninput = function () { inp.value = maskTel(inp.value); state.perfil[f.id] = inp.value; };
+        } else {
+          inp.oninput = function () { state.perfil[f.id] = inp.value.trim(); };
+        }
         field.appendChild(inp);
       } else if (f.tipo === "textarea") {
         var ta = el('<textarea></textarea>'); ta.value = state.perfil[f.id] || "";
@@ -171,16 +189,17 @@
   function viewAutoaval() {
     var A = D.autoaval || D.autoavaliacao;
     var v = el('<div></div>');
-    v.innerHTML = '<p class="kicker">Passo 2 de 4</p><h2>Como você se sente hoje?</h2><p>' + esc(A.instrucao) + '</p>';
+    v.innerHTML = '<p class="kicker">Passo 2 de 4</p><h2>Como você se sente hoje?</h2><p>' + esc(A.instrucao) + '</p>' +
+      '<p class="meta" style="margin-top:-2px">Da esquerda (' + esc(A.escala[0]) + ') para a direita (' + esc(A.escala[A.escala.length - 1]) + ').</p>';
     A.afirmacoes.forEach(function (af) {
       var c = el('<div class="card"><p style="font-weight:600;margin-top:0">' + esc(af.texto) + '</p></div>');
       var scale = el('<div class="scale"></div>');
       A.escala.forEach(function (lbl, i) {
         var chosen = state.autoaval[af.id] === i;
-        var o = el('<div class="opt' + (chosen ? ' sel' : '') + '"><span class="dot"></span><span class="lbl">' + esc(lbl) + '</span></div>');
+        var o = el('<button type="button" class="seg' + (chosen ? ' sel' : '') + '">' + esc(lbl) + '</button>');
         o.onclick = function () {
           state.autoaval[af.id] = i;
-          scale.querySelectorAll(".opt").forEach(function (n) { n.classList.remove("sel"); });
+          scale.querySelectorAll(".seg").forEach(function (n) { n.classList.remove("sel"); });
           o.classList.add("sel");
         };
         scale.appendChild(o);
@@ -226,13 +245,9 @@
       if (state.qIndex === 0) go("autoaval");
       else { state.qIndex--; go("questao"); }
     };
-    var skip = el('<button class="btn ghost">Pular →</button>');
-    skip.onclick = avancarQuestao;
     nav.appendChild(back);
-    nav.appendChild(el('<span class="spacer"></span>'));
-    nav.appendChild(skip);
     v.appendChild(nav);
-    v.appendChild(el('<p class="meta" style="text-align:center;margin-top:14px">Toque na resposta que você acha certa. Sem tradutor 😉</p>'));
+    v.appendChild(el('<p class="meta" style="text-align:center;margin-top:14px">Toque na resposta que você acha certa para avançar. Sem tradutor 😉</p>'));
     return v;
   }
   function avancarQuestao() {
@@ -247,7 +262,7 @@
     v.innerHTML =
       '<p class="kicker">Passo 4 de 4</p><h2>Agora, escreva um pouquinho</h2>' +
       '<p>' + esc(W.instrucao) + '</p>' +
-      '<div class="card gold"><p style="margin:0;font-family:\'Instrument Serif\',serif;font-style:italic;font-size:1.2rem;color:var(--bordo)">“' + esc(W.prompt) + '”</p></div>';
+      '<div class="card gold"><p class="prompt-en">' + esc(W.prompt) + '</p></div>';
     var ta = el('<textarea placeholder="Write your answer here..."></textarea>');
     ta.value = state.escrita;
     ta.oninput = function () { state.escrita = ta.value; };

@@ -31,12 +31,12 @@ window.TESTE_DATA = {
     { id: "email",      label: "E-mail (opcional)",              tipo: "email",    obrigatorio: false },
     { id: "idade",      label: "Sua faixa de idade",             tipo: "radio",    obrigatorio: true,
       opcoes: ["até 17", "18–24", "25–34", "35–44", "45–54", "55+"] },
-    { id: "objetivo",   label: "Por que você quer aprender / melhorar o inglês?", tipo: "radio", obrigatorio: true,
-      opcoes: ["Viagem", "Trabalho / carreira", "Estudos ou prova", "Conversação do dia a dia", "Morar fora", "Outro"] },
-    { id: "experiencia", label: "Como foi seu contato com o inglês até agora?", tipo: "radio", obrigatorio: true,
+    { id: "objetivo",   label: "Por que você quer aprender / melhorar o inglês?", sublabel: "pode marcar mais de uma", tipo: "checkbox", obrigatorio: true,
+      opcoes: ["Viagem", "Trabalho / carreira", "Trabalhar remotamente para o exterior", "Estudos ou prova", "Conversação do dia a dia", "Morar fora", "Outro"] },
+    { id: "experiencia", label: "Como foi seu contato com o inglês até agora?", sublabel: "pode marcar mais de uma", tipo: "checkbox", obrigatorio: true,
       opcoes: ["Praticamente nunca estudei", "Escola / curso no passado", "Estudo sozinho (apps, vídeos)", "Uso no trabalho", "Já morei / moro fora"] },
-    { id: "dias",       label: "Quais dias costumam funcionar para você?", tipo: "checkbox", obrigatorio: true,
-      opcoes: ["Segunda a sexta", "Fim de semana", "Tanto faz"] },
+    { id: "dias",       label: "Quais dias costumam funcionar para você?", sublabel: "marque todos que servem", tipo: "checkbox", obrigatorio: true,
+      opcoes: ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"] },
     { id: "turno",      label: "E qual turno?",                  tipo: "checkbox", obrigatorio: true,
       opcoes: ["Manhã", "Tarde", "Noite"] },
     { id: "observacao", label: "Quer nos contar mais alguma coisa? (opcional)", tipo: "textarea", obrigatorio: false }
@@ -45,7 +45,7 @@ window.TESTE_DATA = {
   /* ---- BLOCO 1 · AUTOAVALIAÇÃO (can-do CEFR) ---------------------------- */
   autoavaliacao: {
     instrucao: "Marque, com sinceridade, o que você já consegue fazer hoje. Não tem certo nem errado — só ajuda a gente a te conhecer.",
-    escala: ["Consigo bem", "Mais ou menos", "Ainda não"],
+    escala: ["Ainda não", "Um pouco", "Com facilidade"],
     afirmacoes: [
       { id: "cando_a1", nivel: "A1", texto: "Consigo me apresentar e dizer meu nome, idade e de onde sou." },
       { id: "cando_a2", nivel: "A2", texto: "Consigo pedir comida num restaurante e fazer compras simples em inglês." },

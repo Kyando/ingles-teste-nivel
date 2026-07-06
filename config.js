@@ -17,10 +17,11 @@
 
 window.TESTE_CONFIG = {
   // Cole aqui a URL do Web App do Google Apps Script (termina em /exec):
+  // A planilha/Apps Script deve ser criada na conta Google: bruno.rmedeiros47@gmail.com
   SHEETS_ENDPOINT: "",
 
   // WhatsApp da escola para o botão de contato no final (só dígitos, com DDI 55):
-  WHATSAPP: "5551999999999",
+  WHATSAPP: "5541996226496",
 
   // Marca exibida (provisória enquanto o nome não sai):
   MARCA: "Natalia Sartor",
