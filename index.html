@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Teste de Nível de Inglês · Natalia Sartor — Escola de Inglês Online</title>
+<meta name="description" content="Descubra seu nível de inglês (A1–C2) em ~15 minutos, no seu celular. Teste gratuito da Escola de Inglês Online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --areia:#F4EAE1; --bordo:#5D1B2A; --espresso:#26221F; --blush:#EBBDBF;
+    --indigo:#92ABC0; --card:#FDF8F3; --grifo:linear-gradient(180deg,transparent 58%,#EBBDBF 58%);
+    --linha:#e5d8cb; --certo:#5a7d4f; --certo-bg:#eaf3e4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--areia);color:var(--espresso);font-family:'Inter',sans-serif;line-height:1.6;font-size:16px}
+  body{padding:0;-webkit-font-smoothing:antialiased}
+  .app{max-width:640px;margin:0 auto;min-height:100dvh;padding:24px 20px 40px;display:flex;flex-direction:column}
+  h1,h2,h3{font-family:'Figtree',sans-serif;color:var(--bordo);line-height:1.16}
+  h1{font-weight:800;font-size:1.9rem;margin:6px 0}
+  h2{font-weight:800;font-size:1.35rem;margin:2px 0 4px}
+  h3{font-weight:700;font-size:1.02rem;color:var(--espresso)}
+  p{margin:8px 0}
+  em.serif{font-family:'Instrument Serif',serif;font-style:italic;color:var(--bordo);font-size:1.1em}
+  .grifo{background:var(--grifo);padding:0 2px}
+  .balao{position:relative;display:inline-block;background:var(--bordo);color:#fff;font-family:'Caveat',cursive;font-size:1.25rem;padding:5px 16px;border-radius:16px;margin-bottom:10px}
+  .balao:after{content:'';position:absolute;bottom:-8px;left:22px;border:8px solid transparent;border-top-color:var(--bordo);border-bottom:0}
+  .kicker{font-family:'Figtree',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--bordo)}
+  .meta{font-size:.82rem;color:#6b625b}
+
+  /* topo: marca + progresso */
+  header.brand{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+  header.brand .name{font-family:'Figtree',sans-serif;font-weight:800;color:var(--bordo);font-size:.95rem;line-height:1.1}
+  header.brand .name small{display:block;font-weight:600;color:#6b625b;font-size:.72rem;letter-spacing:.02em}
+  .progress{height:8px;background:#efe4d8;border-radius:99px;overflow:hidden;margin:2px 0 18px}
+  .progress > i{display:block;height:100%;width:0;background:var(--bordo);border-radius:99px;transition:width .35s ease}
+
+  .screen{flex:1;animation:fade .32s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* cards */
+  .card{background:var(--card);border:1px solid var(--linha);border-radius:16px;padding:18px 18px;margin:14px 0;box-shadow:0 1px 3px rgba(38,34,31,.05)}
+  .card.info{border-left:5px solid var(--indigo)}
+  .card.gold{border-color:#e3cfa6;background:linear-gradient(180deg,#fffaf0,#fdf8f3)}
+
+  /* botões */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Figtree',sans-serif;font-weight:800;font-size:1.02rem;border:none;border-radius:12px;padding:14px 22px;cursor:pointer;transition:transform .06s ease,background .2s ease;text-decoration:none;width:100%}
+  .btn:active{transform:scale(.985)}
+  .btn.primary{background:var(--bordo);color:#fff}
+  .btn.primary:disabled{background:#c9b6ac;cursor:not-allowed}
+  .btn.ghost{background:transparent;color:var(--bordo);border:1.5px solid var(--linha);width:auto;padding:11px 18px;font-size:.92rem}
+  .btn.wa{background:#25995a;color:#fff}
+  .navrow{display:flex;gap:10px;align-items:center;margin-top:18px}
+  .navrow .spacer{flex:1}
+
+  /* formulário */
+  .field{margin:16px 0}
+  .field > label.q{display:block;font-family:'Figtree',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px;color:var(--espresso)}
+  .field .req{color:var(--bordo)}
+  input[type=text],input[type=tel],input[type=email],textarea{width:100%;font-family:'Inter',sans-serif;font-size:1rem;color:var(--espresso);background:#fff;border:1.5px solid var(--linha);border-radius:10px;padding:12px 14px}
+  input:focus,textarea:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(146,171,192,.25)}
+  textarea{min-height:120px;resize:vertical;line-height:1.55}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--linha);border-radius:12px;padding:13px 15px;cursor:pointer;font-size:1rem;transition:border-color .15s,background .15s;user-select:none}
+  .opt:hover{border-color:var(--indigo)}
+  .opt .dot{flex:0 0 20px;height:20px;border-radius:50%;border:2px solid #c7b6a9;display:inline-block;position:relative;transition:.15s}
+  .opt.sel{border-color:var(--bordo);background:#fbf1f0}
+  .opt.sel .dot{border-color:var(--bordo);background:var(--bordo);box-shadow:inset 0 0 0 3px #fff}
+  .opt.multi .dot{border-radius:6px}
+  .opt .lbl{flex:1}
+  .scale{display:flex;gap:8px}
+  .scale .opt{flex:1;flex-direction:column;text-align:center;gap:6px;padding:11px 6px;font-size:.86rem}
+  .scale .opt .dot{flex:0 0 18px;height:18px}
+  .err{color:#a8452f;font-size:.85rem;font-weight:600;margin-top:8px;display:none}
+  .err.show{display:block}
+
+  /* selo CEFR */
+  .seloc{display:inline-flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-weight:800;color:#fff;background:var(--indigo);border-radius:10px;padding:3px 12px;font-size:.9rem}
+  .seloc.A1,.seloc.A2{background:var(--indigo)} .seloc.B1{background:var(--bordo)} .seloc.B2{background:var(--blush);color:var(--espresso)} .seloc.C1,.seloc.C2{background:var(--espresso)}
+
+  /* questão */
+  .qcount{font-family:'Figtree',sans-serif;font-weight:700;color:#6b625b;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+  .stem{font-size:1.22rem;font-weight:600;margin:6px 0 16px;line-height:1.4}
+  .stem .blank{color:var(--bordo);font-weight:800;letter-spacing:1px}
+
+  /* resultado */
+  .result-badge{text-align:center;margin:10px 0 4px}
+  .result-badge .big{display:inline-flex;align-items:center;justify-content:center;min-width:118px;height:118px;border-radius:50%;font-family:'Figtree',sans-serif;font-weight:800;font-size:2.6rem;color:#fff;background:var(--bordo);box-shadow:0 6px 20px rgba(93,27,42,.25)}
+  .result-badge .big.A1,.result-badge .big.A2{background:var(--indigo)} .result-badge .big.B2{background:var(--blush);color:var(--espresso)} .result-badge .big.C1,.result-badge .big.C2{background:var(--espresso)}
+  .result-rotulo{text-align:center;font-family:'Figtree',sans-serif;font-weight:800;color:var(--bordo);font-size:1.3rem;margin-top:10px}
+  .cefr-track{display:flex;gap:4px;margin:16px 0}
+  .cefr-track .lv{flex:1;text-align:center;font-family:'Figtree',sans-serif;font-weight:700;font-size:.72rem;color:#9b8e84;padding:6px 0;border-radius:8px;background:#efe4d8}
+  .cefr-track .lv.on{color:#fff;background:var(--bordo)}
+  footer.legal{margin-top:28px;padding-top:16px;border-top:1px solid var(--linha);font-size:.76rem;color:#8a7f76}
+  .consent{display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-size:.9rem;cursor:pointer}
+  .consent input{margin-top:3px;width:18px;height:18px;flex:0 0 18px;accent-color:var(--bordo)}
+  .hidden{display:none!important}
+  ul.ticks{list-style:none;margin:10px 0}
+  ul.ticks li{padding:5px 0 5px 26px;position:relative}
+  ul.ticks li:before{content:'✓';position:absolute;left:4px;color:var(--certo);font-weight:800}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="brand">
+    <div class="name" id="brandName">Natalia Sartor<small>Escola de Inglês Online</small></div>
+    <span class="seloc" id="brandSeal" title="Teste alinhado ao Quadro Europeu (CEFR)">A1–C2</span>
+  </header>
+  <div class="progress"><i id="progressBar"></i></div>
+
+  <main class="screen" id="screen"><!-- render dinâmico via app.js --></main>
+</div>
+
+<script src="config.js"></script>
+<script src="questoes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
