@@ -23,7 +23,7 @@ window.TESTE_CONFIG = {
   // WhatsApp da escola para o botão de contato no final (só dígitos, com DDI 55):
   WHATSAPP: "5541996226496",
 
-  // Marca exibida (provisória enquanto o nome não sai):
-  MARCA: "Natalia Sartor",
+  // Marca exibida (FolkLore — alinhado ao site folkloreenglish.com.br):
+  MARCA: "FolkLore",
   DESCRITOR: "Escola de Inglês Online"
 };

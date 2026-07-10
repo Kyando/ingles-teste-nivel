@@ -3,20 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Teste de Nível de Inglês · Natalia Sartor — Escola de Inglês Online</title>
-<meta name="description" content="Descubra seu nível de inglês (A1–C2) em ~15 minutos, no seu celular. Teste gratuito da Escola de Inglês Online.">
+<title>Teste de Nível de Inglês · FolkLore — Escola de Inglês Online</title>
+<meta name="description" content="Descubra seu nível de inglês (A1–C2) em ~15 minutos, no seu celular. Teste gratuito da FolkLore, Escola de Inglês Online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Caveat:wght@600;700&family=EB+Garamond:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
   :root{
     --areia:#F4EAE1; --bordo:#5D1B2A; --espresso:#26221F; --blush:#EBBDBF;
-    --indigo:#92ABC0; --card:#FDF8F3; --grifo:linear-gradient(180deg,transparent 58%,#EBBDBF 58%);
-    --linha:#e5d8cb; --certo:#5a7d4f; --certo-bg:#eaf3e4;
+    --indigo:#92ABC0; --card:#FDF8F3; --rose:#C98E96;
+    --grifo:linear-gradient(180deg,transparent 58%,#EBBDBF 58%);
+    --linha:#E4D6C9; --suave:#6A5F57; --certo:#5a7d4f; --certo-bg:#eaf3e4;
+    /* fontes exclusivas do logotipo (não usar em texto corrido) */
+    --f-logo-1:'EB Garamond',Georgia,serif; --f-logo-2:'Fraunces',Georgia,serif;
+    --sombra:0 1px 0 #fff inset,0 10px 26px rgba(93,27,42,.06);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{background:var(--areia);color:var(--espresso);font-family:'Inter',sans-serif;line-height:1.6;font-size:16px}
-  body{padding:0;-webkit-font-smoothing:antialiased}
+  /* papel: brilho quente no topo + grão fino de fibra (igual ao site) */
+  body{padding:0;-webkit-font-smoothing:antialiased;
+    background-color:var(--areia);
+    background-image:
+      radial-gradient(1200px 720px at 50% -12%, color-mix(in srgb, var(--card) 60%, transparent), transparent 62%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.035'/%3E%3C/svg%3E");
+    background-repeat:no-repeat,repeat;
+    background-size:100% 820px,180px 180px}
   .app{max-width:640px;margin:0 auto;min-height:100dvh;padding:24px 20px 40px;display:flex;flex-direction:column}
   h1,h2,h3{font-family:'Figtree',sans-serif;color:var(--bordo);line-height:1.16}
   h1{font-weight:800;font-size:1.9rem;margin:6px 0}
@@ -32,8 +44,12 @@
 
   /* topo: marca + progresso */
   header.brand{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
-  header.brand .name{font-family:'Figtree',sans-serif;font-weight:800;color:var(--bordo);font-size:.95rem;line-height:1.1}
-  header.brand .name small{display:block;font-weight:600;color:#6b625b;font-size:.72rem;letter-spacing:.02em}
+  /* wordmark FolkLore (fonte de verdade: Wordmark.astro do site) */
+  .wm{display:inline-flex;flex-direction:column;line-height:1}
+  .wm__logo{font-size:1.55rem;line-height:1.02;letter-spacing:-.01em;white-space:nowrap}
+  .wm__folk{font-family:var(--f-logo-1);font-weight:600;color:var(--espresso)}
+  .wm__lore{font-family:var(--f-logo-2);font-weight:450;font-style:italic;color:var(--bordo)}
+  .wm__descr{font-family:'Figtree',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;color:var(--suave);margin-top:.45em}
   .progress{height:8px;background:#efe4d8;border-radius:99px;overflow:hidden;margin:2px 0 18px}
   .progress > i{display:block;height:100%;width:0;background:var(--bordo);border-radius:99px;transition:width .35s ease}
 
@@ -41,12 +57,12 @@
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
   /* cards */
-  .card{background:var(--card);border:1px solid var(--linha);border-radius:16px;padding:18px 18px;margin:14px 0;box-shadow:0 1px 3px rgba(38,34,31,.05)}
+  .card{background:var(--card);border:1.5px solid var(--linha);border-radius:20px;padding:18px 18px;margin:14px 0;box-shadow:var(--sombra)}
   .card.info{border-left:5px solid var(--indigo)}
   .card.gold{border-color:#e3cfa6;background:linear-gradient(180deg,#fffaf0,#fdf8f3)}
 
   /* botões */
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Figtree',sans-serif;font-weight:800;font-size:1.02rem;border:none;border-radius:12px;padding:14px 22px;cursor:pointer;transition:transform .06s ease,background .2s ease;text-decoration:none;width:100%}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Figtree',sans-serif;font-weight:800;font-size:1.02rem;border:none;border-radius:14px;padding:14px 22px;cursor:pointer;transition:transform .06s ease,background .2s ease;text-decoration:none;width:100%}
   .btn:active{transform:scale(.985)}
   .btn.primary{background:var(--bordo);color:#fff}
   .btn.primary:disabled{background:#c9b6ac;cursor:not-allowed}
@@ -108,7 +124,10 @@
 <body>
 <div class="app">
   <header class="brand">
-    <div class="name" id="brandName">Natalia Sartor<small>Escola de Inglês Online</small></div>
+    <span class="wm" aria-label="FolkLore — Escola de Inglês Online">
+      <span class="wm__logo"><span class="wm__folk">Folk</span><span class="wm__lore">Lore</span></span>
+      <small class="wm__descr">Escola de Inglês Online</small>
+    </span>
     <span class="seloc" id="brandSeal" title="Teste alinhado ao Quadro Europeu (CEFR)">A1–C2</span>
   </header>
   <div class="progress"><i id="progressBar"></i></div>

@@ -12,11 +12,8 @@
   var screen = document.getElementById("screen");
   var bar = document.getElementById("progressBar");
 
-  // aplica marca vinda do config
-  (function initBrand() {
-    var bn = document.getElementById("brandName");
-    if (bn && CFG.MARCA) bn.innerHTML = CFG.MARCA + "<small>" + (CFG.DESCRITOR || "") + "</small>";
-  })();
+  // O cabeçalho agora é o wordmark FolkLore fixo no HTML (fonte de verdade: Wordmark.astro).
+  // CFG.MARCA/DESCRITOR seguem em uso só no texto corrido (consentimento, rodapé, payload).
 
   var NIVEIS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
@@ -374,7 +371,7 @@
     NIVEIS.forEach(function (n) { track.appendChild(el('<span class="lv' + (n === res.nivel ? ' on' : '') + '">' + n + '</span>')); });
     v.appendChild(track);
     v.appendChild(el('<div class="card"><p style="margin:0">' + esc(msg) + '</p></div>'));
-    v.appendChild(el('<p class="meta" style="text-align:center">Você acertou <strong>' + res.acertos + ' de ' + res.total + '</strong> questões. Sua redação vai ser lida pela ' + esc(CFG.MARCA || "professora") + ' para confirmar seu nível.</p>'));
+    v.appendChild(el('<p class="meta" style="text-align:center">Você acertou <strong>' + res.acertos + ' de ' + res.total + '</strong> questões. Sua redação vai ser lida pela professora para confirmar seu nível.</p>'));
 
     // CTA WhatsApp
     var texto = encodeURIComponent("Oi! Acabei de fazer o teste de nível e meu resultado foi " + res.nivel + " (" + res.rotulo + "). Quero saber sobre as turmas 😊");
