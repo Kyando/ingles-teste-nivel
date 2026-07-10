@@ -1,0 +1,18 @@
+# Deploy no Netlify — teste de nível (site estático, SEM build)
+# Servido em nivelamento.folkloreenglish.com.br
+[build]
+  command = ""      # sem etapa de build: são arquivos estáticos
+  publish = "."     # publica a raiz do repo (index.html, app.js, etc.)
+
+# Cabeçalhos de segurança (mesmo padrão do site principal)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache longo para os assets estáveis (fontes/ícone)
+[[headers]]
+  for = "/favicon.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
