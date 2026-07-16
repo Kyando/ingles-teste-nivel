@@ -21,7 +21,7 @@ window.TESTE_CONFIG = {
   SHEETS_ENDPOINT: "https://script.google.com/macros/s/AKfycbzAvMO07c2uTKAQk8zikUTW7kTJgYh-DG6CikyQ8ZvFhfauB-bCw7U3OzoeN3x6uJyV/exec",
 
   // WhatsApp da escola para o botão de contato no final (só dígitos, com DDI 55):
-  WHATSAPP: "5541996226496",
+  WHATSAPP: "5541999498178",
 
   // Marca exibida (FolkLore — alinhado ao site folkloreenglish.com.br):
   MARCA: "FolkLore",

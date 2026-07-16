@@ -34,7 +34,7 @@
   function blankify(txt) { return esc(txt).replace("___", '<span class="blank">_____</span>'); }
   function scrollTop() { window.scrollTo({ top: 0, behavior: "smooth" }); }
 
-  // máscara de telefone BR: (41) 99622-6496  (aceita fixo 10 díg. e celular 11 díg.)
+  // máscara de telefone BR: (41) 99949-8178  (aceita fixo 10 díg. e celular 11 díg.)
   function maskTel(v) {
     var d = String(v).replace(/\D/g, "").slice(0, 11);
     if (!d) return "";
